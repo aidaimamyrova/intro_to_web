@@ -1,0 +1,15 @@
+<body>
+    <button id="multiBtn">Click or Hover</button> <script>
+        const btn = document.getElementById("multiBtn");
+
+        // Change color when clicked
+        btn.addEventListener("click", () => {
+            btn.style.backgroundColor = "green"; //
+        });
+
+        // Revert color when hovered
+        btn.addEventListener("mouseover", () => {
+            btn.style.backgroundColor = ""; //
+        });
+    </script>
+</body>

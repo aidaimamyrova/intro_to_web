@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Input Value</title>
+</head>
+<body>
+
+    <label for="username">Enter Username:</label>
+    <input type="text" id="username" placeholder="Type here">
+
+    <button onclick="displayValue()">Submit</button>
+
+    <p id="output"></p>
+
+    <script>
+        function displayValue() {
+            // Retrieve the user input from the form field using .value
+            let username = document.getElementById("username").value;
+
+            // Display the entered value on the page inside the 'output' paragraph
+            document.getElementById("output").innerText = "Entered Username: " + username;
+        }
+    </script>
+
+</body>
+</html>

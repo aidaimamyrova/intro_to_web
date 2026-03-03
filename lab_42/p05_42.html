@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+</head>
+<body>
+
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter email">
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" placeholder="Enter age">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("userForm").addEventListener("submit", function(event) {
+            // Prevent the default form reload behavior
+            event.preventDefault();
+
+            // Retrieve all input values
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let age = document.getElementById("age").value;
+
+            // Regex pattern for email validation
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // 1. Check for empty fields
+            if (name.trim() === "" || email.trim() === "" || age.trim() === "") {
+                alert("All fields are required!");
+                return;
+            }
+
+            // 2. Validate email format
+            if (!emailPattern.test(email)) {
+                alert("Invalid email format!");
+                return;
+            }
+
+            // 3. Validate that age is a number
+            if (isNaN(age)) {
+                alert("Age must be a number!");
+                return;
+            }
+
+            // If all validations pass, display success message
+            document.getElementById("result").innerText = "Form submitted successfully!";
+        });
+    </script>
+
+</body>
+</html>

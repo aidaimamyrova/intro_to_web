@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add List Item</title>
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <button onclick="addItem()">Add Item</button>
+
+    <script>
+        function addItem() {
+            // 1. Create a new <li> element
+            let newItem = document.createElement("li");
+            // 2. Set the text for the new item
+            newItem.innerText = "New Item";
+            // 3. Find the list and attach the new item to the end
+            document.getElementById("list").appendChild(newItem);
+        }
+    </script>
+</body>
+</html>

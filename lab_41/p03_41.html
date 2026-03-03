@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Key Press Lab</title>
+</head>
+<body>
+    <input type="text" onkeydown="displayKey(event)">
+    <p id="keyDisplay">Press a key...</p>
+
+    <script>
+        function displayKey(event) {
+            // 'event.key' captures the specific key pressed
+            document.getElementById("keyDisplay").innerText = "Last key pressed: " + event.key;
+        }
+    </script>
+</body>
+</html>

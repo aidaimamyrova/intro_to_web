@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blinking Text</title>
+</head>
+<body>
+
+    <p id="blinkMessage">Flash! This text is blinking.</p>
+
+    <button onclick="startBlinking()">Start Blinking</button>
+
+    <script>
+        function startBlinking() {
+            let text = document.getElementById("blinkMessage");
+
+            // 3. Use setInterval to toggle visibility every 500ms
+            setInterval(function() {
+                // If the text is visible, hide it. Otherwise, show it.
+                if (text.style.visibility === "hidden") {
+                    text.style.visibility = "visible";
+                } else {
+                    text.style.visibility = "hidden";
+                }
+            }, 500); // 500 milliseconds = twice per second
+        }
+    </script>
+
+</body>
+</html>

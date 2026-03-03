@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mouse Hover Lab</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: lightgray;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" onmouseover="hoverIn()" onmouseout="hoverOut()"></div>
+
+    <script>
+        let box = document.getElementById("box");
+
+        function hoverIn() {
+            box.style.backgroundColor = "blue"; // Change to blue on hover
+        }
+
+        function hoverOut() {
+            box.style.backgroundColor = "lightgray"; // Reset when mouse moves away
+        }
+    </script>
+</body>
+</html>

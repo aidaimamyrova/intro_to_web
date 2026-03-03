@@ -1,0 +1,16 @@
+<body>
+    <form id="myForm">
+        <input type="text" placeholder="Type something...">
+        <button type="submit">Submit</button>
+    </form>
+    <p id="formMsg"></p>
+
+    <script>
+        const myForm = document.getElementById("myForm");
+
+        myForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Stops the page from reloading
+            document.getElementById("formMsg").innerText = "Form submission prevented!"; // Displays message
+        });
+    </script>
+</body>

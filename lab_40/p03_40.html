@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change HTML Content</title>
+</head>
+<body>
+
+    <div id="content">Click the button to change this text.</div>
+
+    <button onclick="changeContent()">Change Content</button>
+
+    <script>
+        function changeContent() {
+            // Select the div using its unique ID "content"
+            let element = document.getElementById("content");
+
+            // Replace the text with a new <h2> heading
+            element.innerHTML = "<h2>New Content Added!</h2>";
+        }
+    </script>
+
+</body>
+</html>

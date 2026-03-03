@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List Lab</title>
+</head>
+<body>
+
+    <input type="text" id="taskInput" placeholder="Enter a new task">
+    <button id="addTaskBtn">Add Task</button>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById("taskInput");
+        const addTaskBtn = document.getElementById("addTaskBtn");
+        const taskList = document.getElementById("taskList");
+
+        addTaskBtn.onclick = function() {
+            // Get the value from the input field
+            let taskValue = taskInput.value;
+
+            // Only add if the input is not empty
+            if (taskValue.trim() !== "") {
+                // 3. Create a new li element
+                let li = document.createElement("li");
+
+                // Set the text of the li to the input value
+                li.innerText = taskValue;
+
+                // 4. Add the li element inside the ul
+                taskList.appendChild(li);
+
+                // 5. Clear the input field after adding
+                taskInput.value = "";
+            } else {
+                alert("Please enter a task!");
+            }
+        };
+    </script>
+
+</body>
+</html>
