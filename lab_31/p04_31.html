@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Layout</title>
+    <style>
+        .container {
+            display: grid;
+            /* Sidebar is 200px, main content takes up remaining space */
+            grid-template-columns: 200px 1fr;
+            /* Header 80px, Content flexible, Footer 60px */
+            grid-template-rows: 80px 1fr 60px;
+            gap: 10px;
+        }
+
+        .header, .footer {
+            /* Makes these elements stretch across both columns */
+            grid-column: span 2;
+            background-color: lightblue;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .sidebar {
+            background-color: lightgray;
+            padding: 20px;
+        }
+
+        .content {
+            background-color: lightgreen;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">Header</div>
+        <div class="sidebar">Sidebar</div>
+        <div class="content">Main Content</div>
+        <div class="footer">Footer</div>
+    </div>
+
+</body>
+</html>
