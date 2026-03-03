@@ -1,0 +1,16 @@
+/* Element Selector */
+p {
+    font-size: 18px;
+    color: darkgreen;
+}
+
+/* Class Selector */
+.special-text {
+    background-color: lightblue;
+    font-weight: bold;
+}
+
+/* ID Selector */
+#page-title {
+    color: darkred;
+}

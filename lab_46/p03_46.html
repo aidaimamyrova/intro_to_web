@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery with Navigation</title>
+    <style>
+        /* --- Reuse Styles from Lab 2 --- */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+        .gallery img { width: 100%; cursor: pointer; border-radius: 5px; }
+
+        #imageModal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+            align-items: center; justify-content: center;
+        }
+
+        .modal-content { max-width: 70%; max-height: 70%; border: 5px solid white; }
+
+        /* --- 1. Style the Navigation Buttons --- */
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.2); color: white;
+            padding: 20px; font-size: 30px; border: none; cursor: pointer;
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: rgba(255,255,255,0.5); }
+        #prevBtn { left: 50px; }
+        #nextBtn { right: 50px; }
+        .close-btn { position: absolute; top: 20px; right: 35px; color: white; font-size: 40px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="gallery">
+        <img src="https://picsum.photos/id/10/800/600" alt="Img 1">
+        <img src="https://picsum.photos/id/20/800/600" alt="Img 2">
+        <img src="https://picsum.photos/id/30/800/600" alt="Img 3">
+        <img src="https://picsum.photos/id/40/800/600" alt="Img 4">
+    </div>
+
+    <div id="imageModal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <button class="nav-btn" id="prevBtn" onclick="changeImage(-1)">&#10094;</button>
+        <img class="modal-content" id="full

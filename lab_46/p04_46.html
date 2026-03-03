@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Image Gallery</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; }
+        /* 2. Setup the container for dynamic images */
+        #dynamicGallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .gallery-img:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <h1>Dynamic Gallery</h1>
+
+    <div id="dynamicGallery"></div>
+
+    <script>
+        // 1. Create an array of image URLs
+        const images = [
+            "https://picsum.photos/id/1015/400/300",
+            "https://picsum.photos/id/1016/400/300",
+            "https://picsum.photos/id/1018/400/300",
+            "https://picsum.photos/id/1019/400/300",
+            "https://picsum.photos/id/1020/400/300",
+            "https://picsum.photos/id/1021/400/300"
+        ];
+
+        const galleryContainer = document.getElementById("dynamicGallery");
+
+        // 2. Loop through the array to create elements
+        images.forEach((url, index) => {
+            // Create the <img> element
+            const img = document.createElement("img");
+
+            // Set attributes
+            img.src = url;
+            img.alt = `Gallery Image ${index + 1}`;
+            img.className = "gallery-img";
+
+            // 3. Append images to the gallery container
+            galleryContainer.appendChild(img);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List with Completion</title>
+    <style>
+        /* 1. Define the completed state in CSS */
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        /* Optional: Change cursor to indicate the task is clickable */
+        li span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="taskInput" placeholder="Enter a new task">
+    <button id="addTaskBtn">Add Task</button>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById("taskInput");
+        const addTaskBtn = document.getElementById("addTaskBtn");
+        const taskList = document.getElementById("taskList");
+
+        addTaskBtn.onclick = function() {
+            let taskValue = taskInput.value;
+
+            if (taskValue.trim() !== "") {
+                let li = document.createElement("li");
+
+                // 2. Wrap text in a span so clicking the text toggles completion
+                let taskText = document.createElement("span");
+                taskText.innerText = taskValue;
+
+                // Toggle the 'completed' class when the text is clicked
+                taskText.onclick = function() {
+                    taskText.classList.toggle("completed");
+                };
+
+                let deleteBtn = document.createElement("button");
+                deleteBtn.innerText = "X";
+                deleteBtn.style.marginLeft = "10px";
+
+                deleteBtn.onclick = function() {
+                    li.remove();
+                };
+
+                // Assemble the elements
+                li.appendChild(taskText);
+                li.appendChild(deleteBtn);
+                taskList.appendChild(li);
+
+                taskInput.value = "";
+            }
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery with Modal</title>
+    <style>
+        /* --- Gallery Styles from Lab 1 --- */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        .gallery img { width: 100%; cursor: pointer; transition: 0.3s; border-radius: 5px; }
+        .gallery img:hover { opacity: 0.7; }
+
+        /* --- 2. Modal CSS --- */
+        #imageModal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9); /* Semi-transparent black */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+            border: 5px solid white;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px; right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery">
+        <img src="https://picsum.photos/id/101/600/400" alt="Image 1">
+        <img src="https://picsum.photos/id/102/600/400" alt="Image 2">
+        <img src="https://picsum.photos/id/103/600/400" alt="Image 3">
+    </div>
+
+    <div id="imageModal">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <img class="modal-content" id="fullImage">
+    </div>
+
+    <script>
+        const modal = document.getElementById("imageModal");
+        const fullImg = document.getElementById("fullImage");
+        const closeBtn = document.getElementById("closeBtn");
+        const images = document.querySelectorAll(".gallery img");
+
+        // 3. JavaScript to detect clicks and update src
+        images.forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "flex"; // Show the modal
+                fullImg.src = this.src;      // Copy the clicked image URL
+            }
+        });
+
+        // 4. Implement Close Button
+        closeBtn.onclick = () => modal.style.display = "none";
+
+        // Close when clicking outside the image
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Style</title>
+</head>
+<body>
+
+    <p id="text">Click the button to change my style!</p>
+    <button id="changeStyle">Change Style</button>
+
+    <script>
+        // Select the button and paragraph elements by their IDs
+        let button = document.getElementById("changeStyle");
+        let text = document.getElementById("text");
+
+        // 2. When the button is clicked, change the paragraph's style
+        button.onclick = function() {
+            // Change text color to white
+            text.style.color = "white";
+
+            // Change background color to black
+            text.style.backgroundColor = "black";
+
+            // Change font size to 24px
+            text.style.fontSize = "24px";
+        };
+    </script>
+
+</body>
+</html>

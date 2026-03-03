@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Persistent Task List</title>
+    <style>
+        .completed { text-decoration: line-through; color: gray; }
+        li { margin-bottom: 5px; }
+        .task-text { cursor: pointer; margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="taskInput" placeholder="New task...">
+    <button id="addTaskBtn">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("taskList");
+
+        // 1. Load tasks from localStorage on startup
+        window.onload = function() {
+            const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            savedTasks.forEach(task => addTaskToDOM(task.text, task.completed));
+        };
+
+        // 2. Function to save the current state of the list
+        function saveTasks() {
+            const tasks = [];
+            document.querySelectorAll("li").forEach(li => {
+                tasks.push({
+                    text: li.querySelector(".task-text").innerText,
+                    completed: li.querySelector(".task-text").classList.contains("completed")
+                });
+            });
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+
+        // 3. Helper function to build the UI elements
+        function addTaskToDOM(text, isCompleted = false) {
+            let li = document.createElement("li");
+
+            let span = document.createElement("span");
+            span.innerText = text;
+            span.className = "task-text";
+            if (isCompleted) span.classList.add("completed");
+
+            span.onclick = function() {
+                span.classList.toggle("completed");
+                saveTasks(); // Save after toggle
+            };
+
+            let delBtn = document.createElement("button");
+            delBtn.innerText = "X";
+            delBtn.onclick = function() {
+                li.remove();
+                saveTasks(); // Save after delete
+            };
+
+            li.appendChild(span);
+            li.appendChild(delBtn);
+            taskList.appendChild(li);
+        }
+
+        document.getElementById("addTaskBtn").onclick = function() {
+            if (taskInput.value.trim() !== "") {
+                addTaskToDOM(taskInput.value);
+                saveTasks(); // Save after add
+                taskInput.value = "";
+            }
+        };
+    </script>
+</body>
+</html>

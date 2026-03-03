@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Image</title>
+</head>
+<body>
+
+    <img id="image" src="default.jpg" width="200" alt="Placeholder Image">
+
+    <br>
+
+    <button onclick="changeImage()">Change Image</button>
+
+    <script>
+        function changeImage() {
+            // Select the image element by its ID "image"
+            let img = document.getElementById("image");
+
+            // Use setAttribute to change the "src" from the old file to the new one
+            img.setAttribute("src", "new-image.jpg");
+        }
+    </script>
+
+</body>
+</html>

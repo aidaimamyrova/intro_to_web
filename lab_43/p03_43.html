@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fade Out Effect</title>
+</head>
+<body>
+
+    <p id="fadeText">This text will fade out.</p>
+    <button id="fadeButton">Fade Out</button>
+
+    <script>
+        // Select the button and paragraph elements by their IDs
+        let button = document.getElementById("fadeButton");
+        let text = document.getElementById("fadeText");
+
+        // 2. When the button is clicked, reduce the opacity gradually
+        button.onclick = function() {
+            let opacity = 1; // Initial opacity (fully visible)
+
+            function fade() {
+                // If opacity is still greater than 0, keep reducing it
+                if (opacity > 0) {
+                    opacity -= 0.1; // Decrease opacity by 0.1 each step
+                    text.style.opacity = opacity; // Apply new opacity to element
+
+                    // Call the fade function again after 100 milliseconds
+                    setTimeout(fade, 100);
+                }
+            }
+
+            // Start the fade animation
+            fade();
+        };
+    </script>
+
+</body>
+</html>

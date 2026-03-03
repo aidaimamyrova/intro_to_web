@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 2: Change Background Color</title>
+    <style>
+        /* This sets up the initial look of your box */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightgray; /* The starting color */
+            margin: 20px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+
+    <button onclick="changeColor()">Change Color</button>
+
+    <script>
+        function changeColor() {
+            // Use querySelector to find the element with class "box"
+            // Note: The "." is required to target a class!
+            let box = document.querySelector(".box");
+
+            // Update the style property dynamically
+            box.style.backgroundColor = "blue";
+        }
+    </script>
+
+</body>
+</html>

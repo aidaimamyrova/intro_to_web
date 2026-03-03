@@ -1,0 +1,21 @@
+/* Using color names */
+.color-name {
+    color: red;
+}
+
+/* Using HEX values */
+.hex-color {
+    background-color: #ff5733;
+    color: white;
+}
+
+/* Using RGB values */
+.rgb-color {
+    color: rgb(0, 0, 255);
+}
+
+/* Using RGBA for transparency */
+.rgba-color {
+    background-color: rgba(0, 255, 0, 0.5);
+    padding: 10px;
+}

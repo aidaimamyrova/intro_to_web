@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editable Task List</title>
+    <style>
+        .completed { text-decoration: line-through; color: gray; }
+        li { margin-bottom: 8px; list-style: none; }
+        .task-text { cursor: pointer; margin-right: 10px; font-size: 1.1rem; }
+        button { margin-left: 5px; }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="taskInput" placeholder="Add a new task...">
+    <button id="addTaskBtn">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("taskList");
+
+        function createTask(text) {
+            const li = document.createElement("li");
+
+            // 1. Create the text container (Span)
+            const span = document.createElement("span");
+            span.innerText = text;
+            span.className = "task-text";
+
+            // 2. Create the Edit Button
+            const editBtn = document.createElement("button");
+            editBtn.innerText = "Edit";
+
+            // 3. Create the Delete Button
+            const delBtn = document.createElement("button");
+            delBtn.innerText = "Delete";
+
+            // --- EDIT LOGIC ---
+            editBtn.onclick = function() {
+                // Create an inline input field
+                const editInput = document.createElement("input");
+                editInput.type = "text";
+                editInput.value = span.innerText;
+
+                // Replace the span with the input field
+                li.replaceChild(editInput, span);
+                editInput.focus();
+
+                // Save on Blur (clicking away) or pressing Enter
+                editInput.onkeydown = function(e) {
+                    if (e.key === "Enter") {
+                        saveEdit();
+                    }
+                };
+
+                function saveEdit() {
+                    if (editInput.value.trim() !== "") {
+                        span.innerText = editInput.value;
+                    }
+                    li.replaceChild(span, editInput);
+                }
+            };
+
+            delBtn.onclick = () => li.remove();
+
+            li.appendChild(span);
+            li.appendChild(editBtn);
+            li.appendChild(delBtn);
+            taskList.appendChild(li);
+        }
+
+        document.getElementById("addTaskBtn").onclick = function() {
+            if (taskInput.value.trim() !== "") {
+                createTask
